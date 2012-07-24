@@ -34,7 +34,7 @@ window.onload = function() {
 	spawn = false;
 	mspawn = false;
 	bspawn = false;
-	3spawn = false;
+	threeSpawn = false;
 	var theTileC = tile4c;
 	
 	// Array to hold map assets - used so that the previously loaded assets can be moved around
@@ -282,7 +282,7 @@ window.onload = function() {
 								   y: (j * 32)-Crafty.viewport.y,
 								   z:2, facing: 'left'});
 						}
-					} else if(theTileC[j][i] === BOSS3 && !3spawn) {
+					} else if(theTileC[j][i] === BOSS3 && !threeSpawn) {
 							Crafty.e("Boss3", "remove", "kill")
 							.attr({x:(i * 32)-Crafty.viewport.x, 
 								   y: (j * 32)-Crafty.viewport.y,
@@ -419,10 +419,10 @@ window.onload = function() {
 			$('.about > span').append('C - Flash Jump<br>').hide().fadeIn('slow');
 		});
 
-		Crafty.bind("3spawner", function() {
+		Crafty.bind("threeSpawner", function() {
 			$('#gamepanel span').text('The last minion and another ball. Your life and speed increase again! Time to find the boss.').hide().fadeIn('slow');
 			luPlayer();
-			3spawn = true;
+			threeSpawn = true;
 		});
 		// TO DO: visited flags to change text alerts
 		Crafty.bind("nexttile", function(dir) {
