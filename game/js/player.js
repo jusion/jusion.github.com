@@ -1,6 +1,10 @@
+// Global for player speed -- bad work aruond for the level up funtion
 pspeed = 1;
 
+
+// Player entity 
 Crafty.c("Player", {
+	// List of objects holding various states for the player. Should be fairly obvious
 	hp: {
 		current: 3,
 		max: 3
@@ -9,29 +13,31 @@ Crafty.c("Player", {
 		type: "basic"
 	},
 	questItems: {
-		ball: false,
-		ball2: false,
-		sac: false
+		ball: false, // First boss item -- enables magic attack
+		ball2: false, // Second boss item -- enables magic jump
+		sac: false // Third boss item -- TBD
 	},
 	magic: {
 		current: 10,
 		max: 10
 	},
 	otherItems: {
-		addLater: false,
+		addLater: false, // Example expandability, neither do anything right now
 		moreLater: false
 	},
-	attack: false,
-	shoot: false,
-	blink: false,
-	jumpDist: 60,
-	facing: "down",
-	hurt: false,
+	attack: false, //   Various states the player can be in.
+	shoot: false,  //   Used to delay repeat actions in a very short amount of time.
+	blink: false,  //   (including getting hurt)  
+	hurt: false,  
+	jumpDist: 60,  //	Magic jump distance. May make expandable later 
+	facing: "down",//   Player 'facing' direction -- used for animations, attacks, jumps, etc.
+
+	// Initial constructor function
 	init: function() {
 		this.requires("2D, DOM, Collision, Fourway, Keyboard, SpriteAnimation, player")
 		.attr({x: 16, y:200,z:3})
 		.collision(new Crafty.polygon([0,0],[0,11],
-									  [11,11],[11,0]))
+									  [11,11],[11,0])) // Custom polygon for better collision
 		.fourway(1)
         .animate("walk_left", 6, 3, 8)
         .animate("walk_right", 9, 3, 11)
@@ -40,6 +46,7 @@ Crafty.c("Player", {
 		.onHit('Enemy', function() {
 			Crafty.trigger('Hurt');
 		})
+		// Various bindings for attacks, jumps, etc. -- Keybindings for movement are built into 'Fourway' seen above
 		.bind("KeyDown", function(e) {
 			if(e.keyCode === Crafty.keys['Z'] && this.attack === false){
 				this.attack = true;
@@ -68,14 +75,15 @@ Crafty.c("Player", {
 					this.blink = false;
 					this.jumpDist = 40;
 				}, 700);
-				
+				// 'Cheat' key for testing purposes - gives magic, health, hearts, abilities, etc.	
 			} else if(e.keyCode === Crafty.keys['P']) {
 				Crafty.trigger("mspawner");
 				Crafty.trigger("bspawner");
 				this.questItems.ball = true;
 				this.questItems.ball2 = true;
 			}
-		})
+		}) // Animation binding -- every time the player changes directions, 'Fourway' fires a "New Direction" trigger. 
+		   // Use this to change the sprite animation
         .bind("NewDirection", function(direction) {
             if (direction.x < 0) {
             	if (!this.isPlaying("walk_left")) {
@@ -104,7 +112,7 @@ Crafty.c("Player", {
         	if(!direction.x && !direction.y) {
             	this.stop();
         	}
-        })
+        }) 
 		.bind("Hurt", function() {
 			if(this.hurt === false) {
 				this.hurt = true;
@@ -154,14 +162,14 @@ Crafty.c("Player", {
 				this.y -= this.jumpDist;
 			}
 		} else if (this.facing === "down") {
-			theJump = Crafty.viewport.y + this.y + 18;
+			theJump = Crafty.viewport.y + this.y - 18;
 			if(theJump <= this.jumpDist){
 				this.y += theJump;
 			} else {
 				this.y += this.jumpDist;
 			}
 		} else if (this.facing === "right") {
-			theJump = Crafty.viewport.x + this.x + 18;
+			theJump = Crafty.viewport.x + this.x - 18;
 			if(theJump <= this.jumpDist){
 				this.x += theJump;
 			} else {
