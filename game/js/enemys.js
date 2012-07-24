@@ -471,6 +471,19 @@ Crafty.c("Boss3", {
 				this.trigger("B3Die");
 			}
 		})
+		.onHit("MagicAttack", function() {
+			if(this.bhurt === false){
+				this.bhurt = true;
+				this.hp -= 2;
+				
+				this.timeout(function() {
+					this.bhurt = false;
+				}, 250);
+			}
+			if(this.hp <= 0) {
+				this.trigger("B3Die");
+			}
+		})
 		.bind("B3Die", function() {
 			Crafty.e("Ball3").attr({x: this.x, y:this.y, z:2});
 			this.destroy();

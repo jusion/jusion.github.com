@@ -201,7 +201,7 @@ window.onload = function() {
 			for(var i = 0; i < 15; i++){
 				for(var j = 0; j < 10; j++) {
 					Crafty.e("2D, DOM, remove, cavefloor" + Crafty.math.randomInt(1, 4))
-						.attr({x: (i * 32)-Crafty.viewport.x, y: (j * 32)-Crafty.viewport.y, z:2});
+						.attr({x: (i * 32)-Crafty.viewport.x, y: (j * 32)-Crafty.viewport.y});
 				}
 			}
 
@@ -283,7 +283,7 @@ window.onload = function() {
 								   z:2, facing: 'left'});
 						}
 					} else if(theTileC[j][i] === BOSS3 && !threeSpawn) {
-							Crafty.e("Boss3", "remove", "kill")
+							Crafty.e("Boss3", "remove")
 							.attr({x:(i * 32)-Crafty.viewport.x, 
 								   y: (j * 32)-Crafty.viewport.y,
 								   z:3});
@@ -335,7 +335,7 @@ window.onload = function() {
 								   z:3});
 
 				} else if (theTile[j][i] === BOSS2 && !bspawn) {
-					Crafty.e("Boss2", "remove", "kill")
+					Crafty.e("Boss2", "remove")
 							.attr({x:(i * 16)-Crafty.viewport.x, 
 								   y: (j * 16)-Crafty.viewport.y,
 								   z:3});
