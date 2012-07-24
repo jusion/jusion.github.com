@@ -23,6 +23,7 @@ window.onload = function() {
 	var RLAVA = 18;
 	var BRLAVA = 19;
 	var BAT = 20;
+	var BOSS3 = 21;
 	
 	// current X/Y tile (based on world map postion) that the player is on
 	var xTile = 0;
@@ -280,6 +281,11 @@ window.onload = function() {
 								   y: (j * 32)-Crafty.viewport.y,
 								   z:2, facing: 'left'});
 						}
+					} else if(theTileC[j][i] === BOSS3) {
+							Crafty.e("Boss3", "remove")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:3});
 					}
 				}
 			}
@@ -323,14 +329,14 @@ window.onload = function() {
 								   z:3});
 				} else if (theTile[j][i] === BOSS1 && !mspawn) {
 					Crafty.e("Boss1", "remove", "kill")
-							.attr({x:(i * 16)-Crafty.viewport.x, 
-								   y: (j * 16)-Crafty.viewport.y,
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
 								   z:3});
 
 				} else if (theTile[j][i] === BOSS2 && !bspawn) {
 					Crafty.e("Boss2", "remove")
-							.attr({x:(i * 16)-Crafty.viewport.x, 
-								   y: (j * 16)-Crafty.viewport.y,
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
 								   z:3});
 
 				}else if(theTile[j][i] === ARENEMY) {

@@ -408,3 +408,97 @@ Crafty.c("Boss2", {
 	
 	}
 });
+
+Crafty.c("Boss3", {
+	speed: .6,
+	direction: .6,
+	hp: 6,
+	bhurt: false,
+	battack: false,
+	init: function(){
+		this.requires("2D, DOM, b3sprite, Collision, SpriteAnimation, solid")
+		.animate("b3move", 6, 2, 5)
+		.animate("b3move", 10, -1)
+		.bind("EnterFrame", function() {
+			if(!this.battack){
+				this.x = this.x + this.speed;
+				this.y = this.y + this.direction;
+			}
+			if(this.hit('Player')){
+				Crafty.trigger("Hurt");
+				this.attr({x: this.x - this.speed, y:this.y - this.direction});
+				this.speed = Crafty.math.randomInt(1, 2);
+				this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+				if(this.speed === 2){
+					this.speed = -1;
+				}
+			}else if(this.hit('solid')){
+        		this.attr({x: this.x - this.speed, y:this.y - this.direction});
+				this.speed = Crafty.math.randomInt(1, 2);
+				this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+				if(this.speed === 2){
+					this.speed = -1;
+				}
+			}
+			if((Crafty.math.randomInt(1,100) < 2) && !this.battack){
+				this.bossAttack();
+			}
+		})
+		.onHit("SwordAttack", function() {
+			if(this.bhurt === false){
+				this.bhurt = true;
+				this.hp -= 1;
+				
+				this.timeout(function() {
+					this.bhurt = false;
+				}, 250);
+			}
+			if(this.hp <= 0) {
+				this.trigger("B3Die");
+			}
+		})
+		.bind("B3Die", function() {
+			Crafty.e("Ball3").attr({x: this.x, y:this.y, z:2});
+			this.destroy();
+		});
+		
+	},
+	
+	bossAttack: function(){
+		this.battack = true;
+		
+		Crafty.e("EMagic")
+			.attr({
+				x:this.x, y:this.y - 32, z:1,
+				xspeed: 0, yspeed: -pspeed-2, face: "up"
+				})
+				.animate("mattack", 4, 5, 10)
+				.animate("mattack", 7, -1);
+		Crafty.e("EMagic")
+			.attr({
+				x:this.x, y:this.y + 32, z:1,
+				xspeed: 0, yspeed: pspeed+2, face: "down"
+				})
+				.animate("mattack", 4, 5, 10)
+				.animate("mattack", 7, -1);
+		Crafty.e("EMagic")
+			.attr({
+				x:this.x + 32, y:this.y, z:1,
+				xspeed: pspeed+2, yspeed: 0, face: "right"
+				})
+				.animate("mattack", 4, 5, 10)
+				.animate("mattack", 7, -1);
+		Crafty.e("EMagic")
+			.attr({
+				x:this.x - 32, y:this.y, z:1,
+				xspeed: -pspeed-2, yspeed: 0, face: "left"
+				})
+				.animate("mattack", 4, 5, 10)
+				.animate("mattack", 7, -1);
+		
+		this.timeout(function() {
+					this.battack = false;
+		}, 1000);
+	
+	}
+});

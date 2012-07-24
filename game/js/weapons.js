@@ -44,6 +44,19 @@ Crafty.c("Ball1", {
 		});
 	}
 });
+
+Crafty.c("Ball3", {
+	init: function() {
+		this.requires("2D, DOM, mattack, SpriteAnimation, Collision")
+		.animate("mattack", 4, 5, 10)
+		.animate("mattack", 7, -1)
+		.onHit("Player", function() {
+			player.questItems.ball3 = true;
+			//Crafty.trigger("mspawner");
+			this.destroy();
+		});
+	}
+});
 //Sword 
 Crafty.c("basic", {
 	dmg: 1,

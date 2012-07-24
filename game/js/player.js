@@ -15,7 +15,7 @@ Crafty.c("Player", {
 	questItems: {
 		ball: false, // First boss item -- enables magic attack
 		ball2: false, // Second boss item -- enables magic jump
-		sac: false // Third boss item -- TBD
+		ball3: false // Third boss item -- TBD
 	},
 	magic: {
 		current: 10,
