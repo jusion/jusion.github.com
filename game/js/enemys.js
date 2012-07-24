@@ -186,12 +186,16 @@ Crafty.c("bEnemy", {
         		this.fly = false;
         		if(this.facing === 'up'){
 					this.facing = 'down';
+					this.stop().animate("fly_down", 10, -1);
 				} else if(this.facing === 'down'){
 					this.facing = 'up';
+					this.stop().animate("fly_up", 10, -1);
 				} else if(this.facing === 'right') {
 					this.facing = 'left';
+					this.stop().animate("fly_left", 10, -1);
 				} else {
 					this.facing = 'right';
+					this.stop().animate("fly_right", 10, -1);
 				}
     		}
 			
