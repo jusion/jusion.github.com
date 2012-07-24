@@ -32,6 +32,7 @@ window.onload = function() {
 	spawn = false;
 	mspawn = false;
 	bspawn = false;
+	var theTileC = tile4c;
 	
 	// Array to hold map assets - used so that the previously loaded assets can be moved around
 	// rather than having to re-load assets every time the map tile changes
@@ -177,7 +178,12 @@ window.onload = function() {
 			this.destroy();
 		});
 		
-		var theTileC = theTile + "c";
+		if(theTile === tile4){
+			theTileC = tile4c;
+		} else {
+			theTileC = tile5c;
+		}
+		
 
 		for(var k = 1; k <= player.hp.max; k++){
 			hearts[k-1].attr({ x: (480 - (k * 34))-Crafty.viewport.x  , y: 3-Crafty.viewport.y});
