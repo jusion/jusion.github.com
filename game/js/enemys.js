@@ -161,7 +161,7 @@ Crafty.c("AEnemy", {
 Crafty.c("bEnemy", {
 	speed: 5,
 	facing: 'down',
-	fly: false;
+	fly: false,
 	hp: 1,
 	init: function(){
 		
