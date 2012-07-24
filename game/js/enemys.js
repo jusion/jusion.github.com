@@ -162,6 +162,7 @@ Crafty.c("bEnemy", {
 	speed: 5,
 	facing: 'down',
 	fly: false,
+	flyto: false,
 	hp: 1,
 	init: function(){
 		
@@ -183,8 +184,9 @@ Crafty.c("bEnemy", {
 			if(this.hit('Player')){
 				Crafty.trigger("Hurt");
 			}else if(this.hit('solid')){
-        		this.timeout(function() {
-					this.fly = false;
+				this.fly = false;
+  				this.timeout(function() {
+					this.flyto = false;
 				}, 1000);
         		if(this.facing === 'up'){
 					this.facing = 'down';
@@ -207,9 +209,10 @@ Crafty.c("bEnemy", {
 			
 			if(((Crafty.math.abs(Crafty(Crafty("Player")[0]).x - this.x) < 15) ||
 			   (Crafty.math.abs(Crafty(Crafty("Player")[0]).y - this.y) < 15)) 
-				&& !this.fly)
+				&& !this.flyto && !this.fly)
 			{ 
 				this.fly = true;
+				this.flyto = true;
 			} 
 
 			if(this.fly){
