@@ -2,6 +2,7 @@ window.onload = function() {
 
 	Crafty.init(480, 320);
 
+	// Global for the map loading functions -- descriptions for map tile code numbers
 	var GRASS = 1;
 	var BUSH = 2;
 	var ENEMY = 3;
@@ -22,13 +23,18 @@ window.onload = function() {
 	var RLAVA = 18;
 	var BRLAVA = 19;
 	
+	// current X/Y tile (based on world map postion) that the player is on
 	var xTile = 0;
 	var yTile = 0;
 	
+	// Markers to determine if player is spawned, magic bar is spawned, or bosses are spawned.
+	// Used to assist the load map function so things aren't loaded twice or more.
 	spawn = false;
 	mspawn = false;
 	bspawn = false;
 	
+	// Array to hold map assets - used so that the previously loaded assets can be moved around
+	// rather than having to re-load assets every time the map tile changes
 	var grassy = [];
 	var bushy = [];
 	var cavey = [];
@@ -36,10 +42,12 @@ window.onload = function() {
 	hearts = [];
 	bars = [];
 	
+	// Counters used with the above arrays for map positioning
 	var bCount = 0;
 	var gCount = 0;
 	var cCount = 0;
 	
+	// Sprite loaders
 	Crafty.sprite(16, "game/img/smallsprites.png", {
 		grass1: [0,0],
 		grass2: [1,0],
@@ -103,6 +111,7 @@ window.onload = function() {
 		cavewall3: [8,6]
 	});
 	
+	// inital function to generate all the entities
 	function generateEnts() {
 		// Player init
 		player = Crafty.e("Player");
@@ -132,6 +141,7 @@ window.onload = function() {
 				}); 
 	}
 	
+	// fucntion to level up the player -- add health, magic, etc
 	function luPlayer() {
 	
 		player.magic.current = player.magic.max;
@@ -159,6 +169,8 @@ window.onload = function() {
 		player.fourway(pspeed);
 	}
 	
+	// Function that loads the new map tiles -- moves previously generated elements, as well
+	// as loads new assets as needed.
 	function loadMap(theTile) {
 		
 		Crafty("remove").each(function() {
