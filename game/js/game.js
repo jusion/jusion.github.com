@@ -329,14 +329,14 @@ window.onload = function() {
 								   z:3});
 				} else if (theTile[j][i] === BOSS1 && !mspawn) {
 					Crafty.e("Boss1", "remove", "kill")
-							.attr({x:(i * 32)-Crafty.viewport.x, 
-								   y: (j * 32)-Crafty.viewport.y,
+							.attr({x:(i * 16)-Crafty.viewport.x, 
+								   y: (j * 16)-Crafty.viewport.y,
 								   z:3});
 
 				} else if (theTile[j][i] === BOSS2 && !bspawn) {
 					Crafty.e("Boss2", "remove")
-							.attr({x:(i * 32)-Crafty.viewport.x, 
-								   y: (j * 32)-Crafty.viewport.y,
+							.attr({x:(i * 16)-Crafty.viewport.x, 
+								   y: (j * 16)-Crafty.viewport.y,
 								   z:3});
 
 				}else if(theTile[j][i] === ARENEMY) {
