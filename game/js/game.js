@@ -88,15 +88,15 @@ window.onload = function() {
 		cavefloor2: [1,8],
 		cavefloor3: [0,9],
 		cavefloor4: [1,9],
-		lavacornertl: [6,7],
-		lavaedgel: [6,8],
-		lavacornerbl: [6,9],
-		lavatop: [7,7],
+		tllava: [6,7],
+		llava: [6,8],
+		bllava: [6,9],
+		tlava: [7,7],
 		lava: [7,8],
-		lavabottom: [7,9],
-		lavaedgebr: [8,9],
-		laveedger: [8,8],
-		lavaedgetr: [8,7],
+		blava: [7,9],
+		brlava: [8,9],
+		rlava: [8,8],
+		trlava: [8,7],
 		batsprite: [3, 6],
 		cavewall1: [6,6],
 		cavewall2: [7,6],
@@ -259,76 +259,51 @@ window.onload = function() {
 								   z:3})
 							.collision(new Crafty.polygon([0,0],[0,16],
 									  [14,16],[14,0]));
-				} else if(theTile[j][i] === RRIVER) {
-					Crafty.e("2D, DOM, ririv, remove, Collision,solid")
-							.attr({x:(i * 16)-Crafty.viewport.x, 
-								   y: (j * 16)-Crafty.viewport.y,
-								   z:3})
-							.collision(new Crafty.polygon([0,0],[0,16],
-									  [14,16],[14,0]));
 				} else if(theTile[j][i] === TLLAVA) {
-					Crafty.e("2D, DOM, ririv, remove, Collision,solid")
-							.attr({x:(i * 16)-Crafty.viewport.x, 
-								   y: (j * 16)-Crafty.viewport.y,
-								   z:3})
-							.collision(new Crafty.polygon([0,0],[0,16],
-									  [14,16],[14,0]));
+					Crafty.e("2D, DOM, tllava, remove, Collision,solid")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:3});
 				} else if(theTile[j][i] === LLAVA) {
-					Crafty.e("2D, DOM, ririv, remove, Collision,solid")
-							.attr({x:(i * 16)-Crafty.viewport.x, 
-								   y: (j * 16)-Crafty.viewport.y,
-								   z:3})
-							.collision(new Crafty.polygon([0,0],[0,16],
-									  [14,16],[14,0]));
+					Crafty.e("2D, DOM, llava, remove, Collision,solid")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:3});
 				} else if(theTile[j][i] === BLLAVA) {
-					Crafty.e("2D, DOM, ririv, remove, Collision,solid")
-							.attr({x:(i * 16)-Crafty.viewport.x, 
-								   y: (j * 16)-Crafty.viewport.y,
-								   z:3})
-							.collision(new Crafty.polygon([0,0],[0,16],
-									  [14,16],[14,0]));
+					Crafty.e("2D, DOM, bllava, remove, Collision,solid")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:3});
 				} else if(theTile[j][i] === TLAVA) {
-					Crafty.e("2D, DOM, ririv, remove, Collision,solid")
-							.attr({x:(i * 16)-Crafty.viewport.x, 
-								   y: (j * 16)-Crafty.viewport.y,
-								   z:3})
-							.collision(new Crafty.polygon([0,0],[0,16],
-									  [14,16],[14,0]));
+					Crafty.e("2D, DOM, tlava, remove, Collision,solid")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:3});
 				} else if(theTile[j][i] === LAVA) {
-					Crafty.e("2D, DOM, ririv, remove, Collision,solid")
-							.attr({x:(i * 16)-Crafty.viewport.x, 
-								   y: (j * 16)-Crafty.viewport.y,
-								   z:3})
-							.collision(new Crafty.polygon([0,0],[0,16],
-									  [14,16],[14,0]));
+					Crafty.e("2D, DOM, lava, remove, Collision,solid")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:3});
 				} else if(theTile[j][i] === BLAVA) {
-					Crafty.e("2D, DOM, ririv, remove, Collision,solid")
-							.attr({x:(i * 16)-Crafty.viewport.x, 
-								   y: (j * 16)-Crafty.viewport.y,
-								   z:3})
-							.collision(new Crafty.polygon([0,0],[0,16],
-									  [14,16],[14,0]));
+					Crafty.e("2D, DOM, blava, remove, Collision,solid")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:3});
 				} else if(theTile[j][i] === TRLAVA) {
-					Crafty.e("2D, DOM, ririv, remove, Collision,solid")
-							.attr({x:(i * 16)-Crafty.viewport.x, 
-								   y: (j * 16)-Crafty.viewport.y,
-								   z:3})
-							.collision(new Crafty.polygon([0,0],[0,16],
-									  [14,16],[14,0]));
+					Crafty.e("2D, DOM, trlava, remove, Collision,solid")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:3});
 				} else if(theTile[j][i] === RLAVA) {
-					Crafty.e("2D, DOM, ririv, remove, Collision,solid")
-							.attr({x:(i * 16)-Crafty.viewport.x, 
-								   y: (j * 16)-Crafty.viewport.y,
-								   z:3})
-							.collision(new Crafty.polygon([0,0],[0,16],
-									  [14,16],[14,0]));
+					Crafty.e("2D, DOM, rlava, remove, Collision,solid")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:3});
 				} else if(theTile[j][i] === BRLAVA) {
-					Crafty.e("2D, DOM, ririv, remove, Collision,solid")
-							.attr({x:(i * 16)-Crafty.viewport.x, 
-								   y: (j * 16)-Crafty.viewport.y,
-								   z:3})
-							.collision(new Crafty.polygon([0,0],[0,16],
-									  [14,16],[14,0]));
+					Crafty.e("2D, DOM, brlava, remove, Collision,solid")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:3});
 				} else {
 					//alert("Error: Unknown tile type");
 				}
