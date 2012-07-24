@@ -282,7 +282,7 @@ window.onload = function() {
 								   z:2, facing: 'left'});
 						}
 					} else if(theTileC[j][i] === BOSS3) {
-							Crafty.e("Boss3", "remove")
+							Crafty.e("Boss3", "remove", "kill")
 							.attr({x:(i * 32)-Crafty.viewport.x, 
 								   y: (j * 32)-Crafty.viewport.y,
 								   z:3});
@@ -334,7 +334,7 @@ window.onload = function() {
 								   z:3});
 
 				} else if (theTile[j][i] === BOSS2 && !bspawn) {
-					Crafty.e("Boss2", "remove")
+					Crafty.e("Boss2", "remove", "kill")
 							.attr({x:(i * 16)-Crafty.viewport.x, 
 								   y: (j * 16)-Crafty.viewport.y,
 								   z:3});

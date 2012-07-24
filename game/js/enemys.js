@@ -187,15 +187,19 @@ Crafty.c("bEnemy", {
         		if(this.facing === 'up'){
 					this.facing = 'down';
 					this.stop().animate("fly_down", 10, -1);
+					this.y += 5;
 				} else if(this.facing === 'down'){
 					this.facing = 'up';
 					this.stop().animate("fly_up", 10, -1);
+					this.y -= 5;
 				} else if(this.facing === 'right') {
 					this.facing = 'left';
 					this.stop().animate("fly_left", 10, -1);
+					this.x -= 5;
 				} else {
 					this.facing = 'right';
 					this.stop().animate("fly_right", 10, -1);
+					this.x += 5;
 				}
     		}
 			
@@ -414,11 +418,15 @@ Crafty.c("Boss3", {
 	direction: .6,
 	hp: 6,
 	bhurt: false,
+	facing: 'down',
 	battack: false,
 	init: function(){
 		this.requires("2D, DOM, b3sprite, Collision, SpriteAnimation, solid")
-		.animate("b3move", 6, 2, 5)
-		.animate("b3move", 10, -1)
+		.animate("b3movedown", 6, 2, 8)
+		.animate("b3moveleft", 6, 3, 8)
+		.animate("b3moveright", 6, 4, 8)
+		.animate("b3moveup", 6, 5, 8)
+		.animate("b3movedown", 10, -1)
 		.bind("EnterFrame", function() {
 			if(!this.battack){
 				this.x = this.x + this.speed;
