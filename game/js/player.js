@@ -162,7 +162,7 @@ Crafty.c("Player", {
 				this.y -= this.jumpDist;
 			}
 		} else if (this.facing === "down") {
-			theJump = Crafty.viewport.y - this.y - 18;
+			theJump = -Crafty.viewport.y + this.y - 18;
 			if(theJump <= this.jumpDist){
 				this.y += theJump;
 			} else {
