@@ -22,6 +22,7 @@ window.onload = function() {
 	var TRLAVA = 17;
 	var RLAVA = 18;
 	var BRLAVA = 19;
+	var BAT = 20;
 	
 	// current X/Y tile (based on world map postion) that the player is on
 	var xTile = 0;
@@ -257,6 +258,28 @@ window.onload = function() {
 							.attr({x:(i * 32)-Crafty.viewport.x, 
 								   y: (j * 32)-Crafty.viewport.y,
 								   z:3});
+					} else if(theTileC[j][i] === BAT) {
+						if(j === 1 && !(i === 1 || i === 13)) {
+							Crafty.e("bEnemy, remove, kill")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:2, facing: 'down'});
+						} else if(j === 8 && !(i === 1 || i === 13)) {
+							Crafty.e("bEnemy, remove, kill")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:2, facing: 'up'});
+						} else if(i === 1) {
+							Crafty.e("bEnemy, remove, kill")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:2, facing: 'right'});
+						} else {
+							Crafty.e("bEnemy, remove, kill")
+							.attr({x:(i * 32)-Crafty.viewport.x, 
+								   y: (j * 32)-Crafty.viewport.y,
+								   z:2, facing: 'left'});
+						}
 					}
 				}
 			}

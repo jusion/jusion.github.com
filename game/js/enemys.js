@@ -171,11 +171,28 @@ Crafty.c("bEnemy", {
         .animate("fly_up", 3, 6, 5)
         .animate("fly_down", 3, 8, 5)
 		.bind("EnterFrame", function() {
+			if(this.facing === 'up'){
+				this.animate("fly_up", 10, -1);
+			} else if(this.facing === 'down'){
+				this.animate("fly_down", 10, -1);
+			} else if(this.facing === 'right') {
+				this.animate("fly_right", 10, -1);
+			} else {
+				this.animate("fly_left", 10, -1);
+			}
 			if(this.hit('Player')){
 				Crafty.trigger("Hurt");
 			}else if(this.hit('cavewall')){
         		this.fly = false;
-        		//this.facing = ;
+        		if(this.facing === 'up'){
+					this.facing = 'down';
+				} else if(this.facing === 'down'){
+					this.facing = 'up';
+				} else if(this.facing === 'right') {
+					this.facing = 'left';
+				} else {
+					this.facing = 'right';
+				}
     		}
 			
 			if((Crafty.math.abs(Crafty(Crafty("Player")[0]).x - this.x) < 15) ||
@@ -185,7 +202,15 @@ Crafty.c("bEnemy", {
 			} 
 
 			if(this.fly){
-				//fly a direction based on facing
+				if(this.facing === 'up'){
+					this.y -= this.speed;
+				} else if(this.facing === 'down'){
+					this.y += this.speed;
+				} else if(this.facing === 'right') {
+					this.x += this.speed;
+				} else {
+					this.x -= this.speed;
+				}
 			}
 
 		})
