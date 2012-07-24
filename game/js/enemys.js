@@ -1,0 +1,344 @@
+//Enemy
+Crafty.c("Enemy", {
+	speed: 0,
+	direction: 0,
+	hp: 1,
+	pClose: false,
+	init: function(){
+		this.speed = Crafty.math.randomInt(1, 2);
+		this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+		if(this.speed === 2){
+			this.speed = -1;
+		}
+
+		this.requires("2D, DOM, enemy, Collision, solid, SpriteAnimation")
+		.animate("move", 0, 4, 1)
+		.animate("move", 20, -1)
+		.bind("EnterFrame", function() {
+			this.x = this.x + this.speed;
+			this.y = this.y + this.direction;
+			
+			if(this.hit('Player')){
+				Crafty.trigger("Hurt");
+				this.attr({x: this.x - this.speed, y:this.y - this.direction});
+				this.speed = Crafty.math.randomInt(1, 2);
+				this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+				if(this.speed === 2){
+					this.speed = -1;
+				}
+			}else if(this.hit('solid')){
+        		this.attr({x: this.x - this.speed, y:this.y - this.direction});
+				this.speed = Crafty.math.randomInt(1, 2);
+				this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+				if(this.speed === 2){
+					this.speed = -1;
+				}
+    		}else if (this.pClose){
+				this.speed = 0;
+				this.direction = 0;
+				dX = this.x - Crafty(Crafty("Player")[0]).x
+				dY = this.y - Crafty(Crafty("Player")[0]).y
+				if(dX > 0){
+					this.speed = -.8 ;
+				}else{
+					this.speed = .8;
+				}if(dY > 0){
+					this.direction = -.8;
+				} else{
+					this.direction = .8;
+				}
+			}
+			
+			if((Crafty.math.abs(Crafty(Crafty("Player")[0]).x - this.x) < 60) &&
+			   (Crafty.math.abs(Crafty(Crafty("Player")[0]).y - this.y) < 60))
+			{ 
+				this.pClose = true;
+			} else {
+				this.pClose = false;
+			}
+
+		})
+		.onHit("SwordAttack", function() {
+			this.destroy(); // TO ADD: AI (attack), HP (trigger hurt function)
+		});
+	}
+});
+
+Crafty.c("AEnemy", {
+	speed: 0,
+	direction: 0,
+	shooting: false,
+	hp: 1,
+	init: function(){
+		this.speed = Crafty.math.randomInt(1, 2);
+		this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+		if(this.speed === 2){
+			this.speed = -1;
+		}
+
+		this.requires("2D, DOM, aenemy, Collision, solid, SpriteAnimation")
+		.animate("move", 0, 5, 1)
+		.animate("move", 20, -1)
+		.bind("EnterFrame", function() {
+			if(!this.shooting){
+				this.x = this.x + this.speed;
+				this.y = this.y + this.direction;
+			}
+			
+			if(this.hit('Player')){
+				Crafty.trigger("Hurt");
+				this.attr({x: this.x - this.speed, y:this.y - this.direction});
+				this.speed = Crafty.math.randomInt(1, 2);
+				this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+				if(this.speed === 2){
+					this.speed = -1;
+				}
+			}else if(this.hit('solid')){
+        		this.attr({x: this.x - this.speed, y:this.y - this.direction});
+				this.speed = Crafty.math.randomInt(1, 2);
+				this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+				if(this.speed === 2){
+					this.speed = -1;
+				}
+    		}
+			
+			if((Crafty.math.abs(Crafty(Crafty("Player")[0]).x - this.x) < 5) && !this.shooting)
+			{ 	
+				this.shooting = true;
+				this.shoot("y", (Crafty(Crafty("Player")[0]).y - this.y));
+				this.timeout(function() {
+					this.shooting = false;
+				}, 3000);
+			}
+			if ((Crafty.math.abs(Crafty(Crafty("Player")[0]).y - this.y) < 5) && !this.shooting){
+				this.shooting = true;
+				this.shoot("x", (Crafty(Crafty("Player")[0]).x - this.x));
+				this.timeout(function() {
+					this.shooting = false;
+				}, 3000);
+			}
+
+		})
+		.onHit("SwordAttack", function() {
+			this.destroy(); // TO ADD: AI (attack), HP (trigger hurt function)
+		});
+	},
+	
+	shoot: function(xy, dirdiff) {
+		if(xy === "y"){
+			if(dirdiff > 0){
+				Crafty.e("EArrow", "darrow")
+				.attr({
+					x:this.x, y:this.y + 7, z:1,
+					xspeed: 0, yspeed: 4, face: "down"
+				});
+			} else if(dirdiff < 0) {
+				Crafty.e("EArrow", "uarrow")
+				.attr({
+					x:this.x, y:this.y - 7, z:1,
+					xspeed: 0, yspeed: -4, face: "up"
+				});
+			}
+		}else if(xy === "x"){
+			if(dirdiff > 0){
+				Crafty.e("EArrow", "rarrow")
+				.attr({x:this.x + 7, y:this.y, 
+				z:1,xspeed: 4, yspeed: 0, 
+				face: "right"
+				});
+			} else if(dirdiff < 0) {
+				Crafty.e("EArrow", "larrow")
+				.attr({
+					x:this.x - 7, y:this.y, z:1,
+					xspeed: -4, yspeed: 0, face: "left"
+				});
+			}
+		}
+	}
+	
+});
+
+Crafty.c("Boss1", {
+	speed: .6,
+	direction: .6,
+	hp: 5,
+	bhurt: false,
+	battack: false,
+	init: function(){
+		this.requires("2D, DOM, b1sprite, Collision, SpriteAnimation, solid")
+		.animate("b1move", 3, 2, 5)
+		.animate("b1move", 10, -1)
+		.bind("EnterFrame", function() {
+			if(!this.battack){
+				this.x = this.x + this.speed;
+				this.y = this.y + this.direction;
+			}
+			if(this.hit('Player')){
+				Crafty.trigger("Hurt");
+				this.attr({x: this.x - this.speed, y:this.y - this.direction});
+				this.speed = Crafty.math.randomInt(1, 2);
+				this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+				if(this.speed === 2){
+					this.speed = -1;
+				}
+			}else if(this.hit('solid')){
+        		this.attr({x: this.x - this.speed, y:this.y - this.direction});
+				this.speed = Crafty.math.randomInt(1, 2);
+				this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+				if(this.speed === 2){
+					this.speed = -1;
+				}
+			}
+			if((Crafty.math.randomInt(1,100) < 2) && !this.battack){
+				this.bossAttack();
+			}
+		})
+		.onHit("SwordAttack", function() {
+			if(this.bhurt === false){
+				this.bhurt = true;
+				this.hp -= 1;
+				
+				this.timeout(function() {
+					this.bhurt = false;
+				}, 250);
+			}
+			if(this.hp <= 0) {
+				this.trigger("B1Die");
+			}
+		})
+		.bind("B1Die", function() {
+			Crafty.e("Ball1").attr({x: this.x, y:this.y, z:2});
+			this.destroy();
+		});
+		
+	},
+	
+	bossAttack: function(){
+		this.battack = true;
+		
+		Crafty.e("EMagic")
+			.attr({
+				x:this.x, y:this.y - 32, z:1,
+				xspeed: 0, yspeed: -pspeed-2, face: "up"
+				})
+				.animate("mattack", 4, 5, 10)
+				.animate("mattack", 7, -1);
+		Crafty.e("EMagic")
+			.attr({
+				x:this.x, y:this.y + 32, z:1,
+				xspeed: 0, yspeed: pspeed+2, face: "down"
+				})
+				.animate("mattack", 4, 5, 10)
+				.animate("mattack", 7, -1);
+		Crafty.e("EMagic")
+			.attr({
+				x:this.x + 32, y:this.y, z:1,
+				xspeed: pspeed+2, yspeed: 0, face: "right"
+				})
+				.animate("mattack", 4, 5, 10)
+				.animate("mattack", 7, -1);
+		Crafty.e("EMagic")
+			.attr({
+				x:this.x - 32, y:this.y, z:1,
+				xspeed: -pspeed-2, yspeed: 0, face: "left"
+				})
+				.animate("mattack", 4, 5, 10)
+				.animate("mattack", 7, -1);
+		
+		this.timeout(function() {
+					this.battack = false;
+		}, 3000);
+	
+	}
+});
+
+Crafty.c("Boss2", {
+	speed: .25,
+	direction: .25,
+	xp: .25,
+	yd: .25,
+	hp: 5,
+	bhurt: false,
+	battack: false,
+	init: function(){
+		this.requires("2D, DOM, b2sprite, Collision, SpriteAnimation, solid")
+		.animate("b2move", 0, 2, 2)
+		.animate("teleport", 0, 5, 2)
+		.animate("b2move", 10, -1)
+		.bind("EnterFrame", function() {
+			
+			dX = this.x - Crafty(Crafty("Player")[0]).x
+			dY = this.y - Crafty(Crafty("Player")[0]).y
+			if(dX > 0){
+				this.speed = -this.xp;
+			}else{
+				this.speed = this.xp;
+			}if(dY > 0){
+				this.direction = -this.yd;
+			} else{
+				this.direction = this.yd;
+			}
+			
+			this.x += this.speed;
+			this.y += this.direction;
+			
+			if(this.hit('Player')){
+				Crafty.trigger("Hurt");
+				this.attr({x: this.x - this.speed, y:this.y - this.direction});
+			}
+			if((Crafty.math.randomInt(1,300) === 1) && !this.battack){
+				this.bossAttack();
+			}
+		})
+		.onHit("SwordAttack", function() {
+			if(this.bhurt === false){
+				this.bhurt = true;
+				this.hp -= 1;
+				
+				this.timeout(function() {
+					this.bhurt = false;
+				}, 250);
+			}
+			if(this.hp <= 0) {
+				this.trigger("B2Die");
+			}
+		})
+		.onHit("MagicAttack", function() {
+			if(this.bhurt === false){
+				this.bhurt = true;
+				this.hp -= 2;
+				
+				this.timeout(function() {
+					this.bhurt = false;
+				}, 250);
+			}
+			if(this.hp <= 0) {
+				this.trigger("B2Die");
+			}
+		})
+		.bind("B2Die", function() {
+			Crafty.e("Ball2").attr({x: this.x, y:this.y, z:2});
+			this.destroy();
+		});
+		
+	},
+	
+	bossAttack: function(){
+		this.battack = true;
+		this.stop().animate("teleport", 10, -1);
+		this.x = Crafty.math.randomInt(32,448)-Crafty.viewport.x;
+		this.y = Crafty.math.randomInt(32,292)-Crafty.viewport.y;
+		
+		this.xp += .25;
+		this.yd += .25;
+		
+		this.timeout(function() {
+					this.stop().animate("b2move", 10, -1);
+		}, 500);
+		
+		this.timeout(function() {
+					this.battack = false;
+		}, 1500);
+	
+	}
+});
