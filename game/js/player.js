@@ -164,8 +164,10 @@ Crafty.c("Player", {
 		} else if (this.facing === "down") {
 			theJump = 320 - (this.y + Crafty.viewport.y - 18);
 			if(theJump <= this.jumpDist){
+				alert("not full jump dist"+theJump);
 				this.y += theJump;
 			} else {
+				alert("full jump dist"+theJump);
 				this.y += this.jumpDist;
 			}
 		} else if (this.facing === "right") {
