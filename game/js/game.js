@@ -203,7 +203,7 @@ window.onload = function() {
 			}
 
 			for(var i = 0; i < 15; i++){
-				for(var i = 0; i < 10; i++) {
+				for(var j = 0; j < 10; j++) {
 
 					if(theTileC[j][i] === BUSH) {
 						cavey[cCount].attr({x: (i * 32)-Crafty.viewport.x, y: (j * 32)-Crafty.viewport.y, z:2});
