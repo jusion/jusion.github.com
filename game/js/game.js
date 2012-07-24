@@ -172,6 +172,10 @@ window.onload = function() {
 	
 	// Function that loads the new map tiles -- moves previously generated elements, as well
 	// as loads new assets as needed.
+
+	// Gets a bit confusing because I mixed 16px and 32px map tiles, so I need 2 maps tiles 
+	// for the caves, and 2 different nested for loops to go through both. A sloppy work around
+	// but it works
 	function loadMap(theTile) {
 		
 		Crafty("remove").each(function() {

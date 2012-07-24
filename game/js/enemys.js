@@ -158,6 +158,43 @@ Crafty.c("AEnemy", {
 	
 });
 
+Crafty.c("bEnemy", {
+	speed: 5,
+	facing: 'down',
+	fly: false;
+	hp: 1,
+	init: function(){
+		
+		this.requires("2D, DOM, batsprite, Collision, SpriteAnimation")
+		.animate("fly_left", 3, 7, 5)
+        .animate("fly_right", 3, 9, 5)
+        .animate("fly_up", 3, 6, 5)
+        .animate("fly_down", 3, 8, 5)
+		.bind("EnterFrame", function() {
+			if(this.hit('Player')){
+				Crafty.trigger("Hurt");
+			}else if(this.hit('cavewall')){
+        		this.fly = false;
+        		//this.facing = ;
+    		}
+			
+			if((Crafty.math.abs(Crafty(Crafty("Player")[0]).x - this.x) < 15) ||
+			   (Crafty.math.abs(Crafty(Crafty("Player")[0]).y - this.y) < 15))
+			{ 
+				this.fly = true;
+			} 
+
+			if(this.fly){
+				//fly a direction based on facing
+			}
+
+		})
+		.onHit("SwordAttack", function() {
+			this.destroy(); // TO ADD: AI (attack), HP (trigger hurt function)
+		});
+	}
+});
+
 Crafty.c("Boss1", {
 	speed: .6,
 	direction: .6,
