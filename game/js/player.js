@@ -157,14 +157,14 @@ Crafty.c("Player", {
 			theJump = Crafty.viewport.y - this.y + 18;
 			if(theJump <= this.jumpDist){
 				this.y += theJump;
-			} else 
+			} else {
 				this.y += this.jumpDist;
 			}
 		} else if (this.facing === "right") {
 			theJump = Crafty.viewport.x - this.x + 18;
 			if(theJump <= this.jumpDist){
 				this.x += theJump;
-			} else{
+			} else {
 				this.x += this.jumpDist;
 			}
 		} else {
