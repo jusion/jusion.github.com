@@ -182,7 +182,7 @@ Crafty.c("bEnemy", {
 			}
 			if(this.hit('Player')){
 				Crafty.trigger("Hurt");
-			}else if(this.hit('cavewall')){
+			}else if(this.hit('solid')){
         		this.fly = false;
         		if(this.facing === 'up'){
 					this.facing = 'down';
