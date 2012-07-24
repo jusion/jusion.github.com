@@ -183,28 +183,31 @@ Crafty.c("bEnemy", {
 			if(this.hit('Player')){
 				Crafty.trigger("Hurt");
 			}else if(this.hit('solid')){
-        		this.fly = false;
+        		this.timeout(function() {
+					this.fly = false;
+				}, 1000);
         		if(this.facing === 'up'){
 					this.facing = 'down';
 					this.stop().animate("fly_down", 10, -1);
-					this.y += 5;
+					this.y += 8;
 				} else if(this.facing === 'down'){
 					this.facing = 'up';
 					this.stop().animate("fly_up", 10, -1);
-					this.y -= 5;
+					this.y -= 8;
 				} else if(this.facing === 'right') {
 					this.facing = 'left';
 					this.stop().animate("fly_left", 10, -1);
-					this.x -= 5;
+					this.x -= 8;
 				} else {
 					this.facing = 'right';
 					this.stop().animate("fly_right", 10, -1);
-					this.x += 5;
+					this.x += 8;
 				}
     		}
 			
-			if((Crafty.math.abs(Crafty(Crafty("Player")[0]).x - this.x) < 15) ||
-			   (Crafty.math.abs(Crafty(Crafty("Player")[0]).y - this.y) < 15))
+			if(((Crafty.math.abs(Crafty(Crafty("Player")[0]).x - this.x) < 15) ||
+			   (Crafty.math.abs(Crafty(Crafty("Player")[0]).y - this.y) < 15)) 
+				&& !this.fly)
 			{ 
 				this.fly = true;
 			} 
