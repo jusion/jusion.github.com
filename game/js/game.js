@@ -136,11 +136,14 @@ window.onload = function() {
 		benemy:["game/sfx/benemy.mp3","game/sfx/benemy.ogg"],
 
 		title:["game/sfx/title.mp3","game/sfx/title.ogg"],
-		defaultmusic:["game/sfx/default.mp3","game/sfx/default.ogg"],
 		cave:["game/sfx/cave.mp3","game/sfx/cave.ogg"],
 		desert:["game/sfx/desert.mp3", "game/sfx/desert.ogg"]
 	});
-
+	
+	Crafty.audio.add("default",
+					["game/sfx/default.mp3",
+					"game/sfx/default.ogg"
+	]);
 	// inital function to generate all the entities
 	function generateEnts() {
 		// Player init
