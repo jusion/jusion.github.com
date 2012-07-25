@@ -117,6 +117,7 @@ Crafty.c("Magic", {
 				}, 150);
 			}
 			en.hp -= this.dmg;
+			Crafty.audio.play("enemy", 1);
 			if(en.hp <= 0){
 				en.destroy();
 			}

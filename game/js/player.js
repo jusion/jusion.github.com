@@ -50,6 +50,7 @@ Crafty.c("Player", {
 		.bind("KeyDown", function(e) {
 			if(e.keyCode === Crafty.keys['Z'] && this.attack === false){
 				this.attack = true;
+				Crafty.audio.play("swing"+Crafty.math.randomInt(1, 3), 1);
 				this.swingAttack();
 				this.timeout(function() {
 					this.attack = false;

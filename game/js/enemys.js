@@ -59,6 +59,7 @@ Crafty.c("Enemy", {
 
 		})
 		.onHit("SwordAttack", function() {
+			Crafty.audio.play("enemy", 1);
 			this.destroy(); // TO ADD: AI (attack), HP (trigger hurt function)
 		});
 	}
@@ -121,6 +122,7 @@ Crafty.c("AEnemy", {
 		})
 		.onHit("SwordAttack", function() {
 			this.destroy(); // TO ADD: AI (attack), HP (trigger hurt function)
+			Crafty.audio.play("enemy", 1);
 		});
 	},
 	

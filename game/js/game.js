@@ -122,6 +122,25 @@ window.onload = function() {
 		cavewall3: [8,6]
 	});
 	
+	Crafty.audio.add({
+		swing1: "sfx/swing1.wav",
+		swing2: "sfx/swing2.wav",
+		swing3: "sfx/swing3.wav",
+		spell: "sfx/spell.wav",
+		jump: "sfx/jump.wav",
+
+		boss1:"sfx/boss1.wav",
+		boss2:"sfx/boss2.wav",
+		boss3:"sfx/boss3.wav",
+		enemy:"sfx/enemy.wav",
+		benemy:"sfx/benemy.mp3",
+
+		title:"sfx/title.mp3",
+		defaultmusic:"sfx/default.mp3",
+		cave:"sfx/cave.mp3"
+		desert:"sfx/desert.mp3"
+	});
+
 	// inital function to generate all the entities
 	function generateEnts() {
 		// Player init
@@ -413,7 +432,8 @@ window.onload = function() {
 	// Add title screen
 
 	Crafty.scene("main", function() {
-
+		
+		Crafty.audio.play("defaultmusic", -1);
 		if(!spawn){
 			spawn = true;
 			generateEnts();
