@@ -433,7 +433,8 @@ window.onload = function() {
 
 	Crafty.scene("main", function() {
 
-		Crafty.audio.play("defaultmusic", -1);
+		Crafty.audio.play("defaultmusic", -1, 1);
+
 		if(!spawn){
 			spawn = true;
 			generateEnts();
