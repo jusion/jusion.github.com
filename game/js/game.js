@@ -225,48 +225,47 @@ window.onload = function() {
 					} else if(theTileC[j][i] === TLLAVA) {
 							Crafty.e("2D, DOM, tllava, remove, Collision,solid, river")
 							.attr({x:(i * 32)-Crafty.viewport.x, 
-								   y: (j * 32)-Crafty.viewport.y,
-								   z:3});
+								   y: (j * 32)-Crafty.viewport.y, z:1});
 					} else if(theTileC[j][i] === LLAVA) {
 							Crafty.e("2D, DOM, llava, remove, Collision,solid, river")
 							.attr({x:(i * 32)-Crafty.viewport.x, 
 								   y: (j * 32)-Crafty.viewport.y,
-								   z:3});
+								   z:1});
 					} else if(theTileC[j][i] === BLLAVA) {
 							Crafty.e("2D, DOM, bllava, remove, Collision,solid, river")
 							.attr({x:(i * 32)-Crafty.viewport.x, 
 								   y: (j * 32)-Crafty.viewport.y,
-								   z:3});
+								   z:1});
 					} else if(theTileC[j][i] === TLAVA) {
 							Crafty.e("2D, DOM, tlava, remove, Collision,solid, river")
 							.attr({x:(i * 32)-Crafty.viewport.x, 
 								   y: (j * 32)-Crafty.viewport.y,
-								   z:3});
+								   z:1});
 					} else if(theTileC[j][i] === LAVA) {
 							Crafty.e("2D, DOM, lava, remove, Collision,solid,river")
 							.attr({x:(i * 32)-Crafty.viewport.x, 
 								   y: (j * 32)-Crafty.viewport.y,
-								   z:3});
+								   z:1});
 					} else if(theTileC[j][i] === BLAVA) {
 							Crafty.e("2D, DOM, blava, remove, Collision,solid, river")
 							.attr({x:(i * 32)-Crafty.viewport.x, 
 								   y: (j * 32)-Crafty.viewport.y,
-								   z:3});
+								   z:1});
 					} else if(theTileC[j][i] === TRLAVA) {
 							Crafty.e("2D, DOM, trlava, remove, Collision,solid, river")
 							.attr({x:(i * 32)-Crafty.viewport.x, 
 								   y: (j * 32)-Crafty.viewport.y,
-								   z:3});
+								   z:1});
 					} else if(theTileC[j][i] === RLAVA) {
 							Crafty.e("2D, DOM, rlava, remove, Collision,solid, river")
 							.attr({x:(i * 32)-Crafty.viewport.x, 
 								   y: (j * 32)-Crafty.viewport.y,
-								   z:3});
+								   z:1});
 					} else if(theTileC[j][i] === BRLAVA) {
 							Crafty.e("2D, DOM, brlava, remove, Collision,solid, river")
 							.attr({x:(i * 32)-Crafty.viewport.x, 
 								   y: (j * 32)-Crafty.viewport.y,
-								   z:3});
+								   z:1});
 					} else if(theTileC[j][i] === BAT) {
 						if(j === 1 && !(i === 1 || i === 13)) {
 							Crafty.e("bEnemy, remove, kill")
@@ -373,17 +372,17 @@ window.onload = function() {
 					Crafty.e("2D, DOM, leriv, remove, Collision, solid, river")
 							.attr({x:(i * 16)-Crafty.viewport.x, 
 								   y: (j * 16)-Crafty.viewport.y,
-								   z:3});
+								   z:2});
 				} else if(theTile[j][i] === CRIVER) {
 					Crafty.e("2D, DOM, ceriv, remove, Collision, solid, river")
 							.attr({x:(i * 16)-Crafty.viewport.x, 
 								   y: (j * 16)-Crafty.viewport.y,
-								   z:3});
+								   z:2});
 				} else if(theTile[j][i] === RRIVER) {
 					Crafty.e("2D, DOM, ririv, remove, Collision, solid, river")
 							.attr({x:(i * 16)-Crafty.viewport.x, 
 								   y: (j * 16)-Crafty.viewport.y,
-								   z:3});
+								   z:2});
 				}  
 			}
 		}
