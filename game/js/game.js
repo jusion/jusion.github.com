@@ -137,7 +137,7 @@ window.onload = function() {
 
 		title:"sfx/title.mp3",
 		defaultmusic:"sfx/default.mp3",
-		cave:"sfx/cave.mp3"
+		cave:"sfx/cave.mp3",
 		desert:"sfx/desert.mp3"
 	});
 
@@ -432,7 +432,7 @@ window.onload = function() {
 	// Add title screen
 
 	Crafty.scene("main", function() {
-		
+
 		Crafty.audio.play("defaultmusic", -1);
 		if(!spawn){
 			spawn = true;
