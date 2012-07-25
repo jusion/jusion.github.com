@@ -372,17 +372,17 @@ window.onload = function() {
 					Crafty.e("2D, DOM, leriv, remove, Collision, solid, river")
 							.attr({x:(i * 16)-Crafty.viewport.x, 
 								   y: (j * 16)-Crafty.viewport.y,
-								   z:2});
+								   z:1});
 				} else if(theTile[j][i] === CRIVER) {
 					Crafty.e("2D, DOM, ceriv, remove, Collision, solid, river")
 							.attr({x:(i * 16)-Crafty.viewport.x, 
 								   y: (j * 16)-Crafty.viewport.y,
-								   z:2});
+								   z:1});
 				} else if(theTile[j][i] === RRIVER) {
 					Crafty.e("2D, DOM, ririv, remove, Collision, solid, river")
 							.attr({x:(i * 16)-Crafty.viewport.x, 
 								   y: (j * 16)-Crafty.viewport.y,
-								   z:2});
+								   z:1});
 				}  
 			}
 		}
