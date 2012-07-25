@@ -445,7 +445,7 @@ window.onload = function() {
 		});
 
 		Crafty.bind("threeSpawner", function() {
-			$('#gamepanel span').text('The last minion and another ball. Your life and speed increase again! Time to find the boss.').hide().fadeIn('slow');
+			$('#gamepanel span').text('The last minion and another ball. Your life and speed increase again! Time to find the final boss.').hide().fadeIn('slow');
 			luPlayer();
 			threeSpawn = true;
 		});
@@ -457,6 +457,14 @@ window.onload = function() {
 				loadMap(world[yTile][xTile]);
 				if(world[yTile][xTile] === tile3){
 					$('#gamepanel span').text('An ambush!!').hide().fadeIn('slow');
+				} else if(world[yTile][xTile] === tile6 && !bspawn) {
+					$('#gamepanel span').text('Another monster lies in your path. You feel the power of his balls').hide().fadeIn('slow');
+				} else if(world[yTile][xTile] === tile6) {
+					$('#gamepanel span').text('Your work here is done....').hide().fadeIn('slow');
+				} else if(world[yTile][xTile] === tile9) {
+					$('#gamepanel span').text('A desert..you can feel the end of your journey approaching..').hide().fadeIn('slow');
+				} else {
+					$('#gamepanel span').text('Back here..').hide().fadeIn('slow');
 				}
 			}
 			else if(dir === "u") {
@@ -465,6 +473,10 @@ window.onload = function() {
 				loadMap(world[yTile][xTile]);
 				if(world[yTile][xTile] === tile1){
 					$('#gamepanel span').text('Back here....looks the same').hide().fadeIn('slow');
+				} if(world[yTile][xTile] === tile4){
+					$('#gamepanel span').text('A cave...need to be ballsy to make it through here').hide().fadeIn('slow');
+				} else {
+					$('#gamepanel span').text('Back here..').hide().fadeIn('slow');
 				}
 			}
 			else if(dir === "r") {
@@ -475,6 +487,16 @@ window.onload = function() {
 					$('#gamepanel span').text('You see a giant monster across the field. You can feel the magic eminating from his balls. Prob should kill him.').hide().fadeIn('slow');
 				} else if (world[yTile][xTile] === tile2 && mspawn){
 					$('#gamepanel span').text('Back here....nothing new').hide().fadeIn('slow');
+				}  else if (world[yTile][xTile] === tile7 && !bspawn){
+					$('#gamepanel span').text('A raging river lies in your path. You need some kind of..ability to cross.').hide().fadeIn('slow');
+				} else if (world[yTile][xTile] === tile7){
+					$('#gamepanel span').text('A raging river lies in your path. Teleport across! The cave above beckons..').hide().fadeIn('slow');
+				} else if (world[yTile][xTile] === tile5 && !threeSpawn){
+					$('#gamepanel span').text('The final minor lies ahead. One last ball before you can try to end this hell.').hide().fadeIn('slow');
+				} else if (world[yTile][xTile] === tile5){
+					$('#gamepanel span').text('Nothing left for you here...').hide().fadeIn('slow');
+				} else {
+					$('#gamepanel span').text('Back here..').hide().fadeIn('slow');
 				}
 				
 			}
@@ -484,6 +506,10 @@ window.onload = function() {
 				loadMap(world[yTile][xTile]);
 				if(world[yTile][xTile] === tile1){
 					$('#gamepanel span').text('Back here....lets try heading South').hide().fadeIn('slow');
+				} else if(world[yTile][xTile] === tile10) {
+					$('#gamepanel span').text("Ba'al lies directly in your path. It's you or him in the fight for his balls!").hide().fadeIn('slow');
+				} else {
+					$('#gamepanel span').text('Back here..').hide().fadeIn('slow');
 				}
 			}
 		});
