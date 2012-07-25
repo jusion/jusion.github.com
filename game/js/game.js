@@ -123,22 +123,22 @@ window.onload = function() {
 	});
 	
 	Crafty.audio.add({
-		swing1: "sfx/swing1.wav",
-		swing2: "sfx/swing2.wav",
-		swing3: "sfx/swing3.wav",
-		spell: "sfx/spell.wav",
-		jump: "sfx/jump.wav",
+		swing1: "game/sfx/swing.wav",
+		swing2: "game/sfx/swing2.wav",
+		swing3: "game/sfx/swing3.wav",
+		spell: "game/sfx/spell.wav",
+		jump: "game/sfx/jump.wav",
 
-		boss1:"sfx/boss1.wav",
-		boss2:"sfx/boss2.wav",
-		boss3:"sfx/boss3.wav",
-		enemy:"sfx/enemy.wav",
-		benemy:"sfx/benemy.mp3",
+		boss1:"game/sfx/boss1.wav",
+		boss2:"game/sfx/boss2.wav",
+		boss3:"game/sfx/boss3.wav",
+		enemy:"game/sfx/enemy.wav",
+		benemy:"game/sfx/benemy.mp3",
 
-		title:"sfx/title.mp3",
-		defaultmusic:"sfx/default.mp3",
-		cave:"sfx/cave.mp3",
-		desert:"sfx/desert.mp3"
+		title:"game/sfx/title.mp3",
+		defaultmusic:"game/sfx/default.mp3",
+		cave:"game/sfx/cave.mp3",
+		desert:"game/sfx/desert.mp3"
 	});
 
 	// inital function to generate all the entities
