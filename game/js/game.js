@@ -81,7 +81,14 @@ window.onload = function() {
 		mlbu: [4,6],
 		leriv: [0,7],
 		ceriv:[1,7],
-		ririv:[2,7]
+		ririv:[2,7],
+		desertfloor1: [0,8],
+		desertfloor2: [1,8],
+		desertfloor3: [2,8],
+		desertfloor4: [3,8],
+		dstuff1: [4,8],
+		dstuff2: [5,8],
+		dstuff3: [6,8],
 	});
 
 	Crafty.sprite(32, "game/img/largesprites.png", {
@@ -109,7 +116,7 @@ window.onload = function() {
 		brlava: [8,9],
 		rlava: [8,8],
 		trlava: [8,7],
-		batsprite: [3, 6],
+		batsprite: [3,6],
 		cavewall1: [6,6],
 		cavewall2: [7,6],
 		cavewall3: [8,6]
@@ -292,6 +299,15 @@ window.onload = function() {
 			}
 		}
 		
+		if(theTile === tile9 || theTile === tile10){
+			for(var i = 0; i < 30; i++) {
+				for(var j = 0; j < 20; j++) {
+					Crafty.e("2D, DOM, remove, desertfloor" + Crafty.math.randomInt(1, 4))
+						.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
+				}
+			}
+		}
+
 		if(mspawn){
 			
 			for(var i = 0; i< 10; i++){
@@ -308,19 +324,29 @@ window.onload = function() {
 
 			for(var j = 0; j < 20; j++) {
 				
-      			grassy[gCount].attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
-				gCount = gCount + 1;
-				
-				if (theTile[j][i] === BUSH && !(theTile === tile4 || theTile === tile5)) {
+				if(!(theTile === tile9 || theTile === tile10)) {
+      				grassy[gCount].attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
+					gCount = gCount + 1;
+				} 
+				if (theTile[j][i] === BUSH && !(theTile === tile4 || theTile === tile5 || theTile === tile9 || theTile === tile10)) {
 					bushy[bCount].attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y, z:2});
 					bCount = bCount + 1;
 				}
 
 				else if (theTile[j][i] === OBST) {
-    				Crafty.e("2D, DOM, solid, remove, SpriteAnimation, stuff" + Crafty.math.randomInt(1, 4))
+					if(theTile === tile9 || theTile === tile10){
+						Crafty.e("2D, DOM, solid, remove, SpriteAnimation, dstuff" + Crafty.math.randomInt(1, 3))
 							.attr({x: (i * 16)-Crafty.viewport.x,
 								   y: (j * 16)-Crafty.viewport.y,
 								   z:2});
+						}
+					}
+    				else {
+    					Crafty.e("2D, DOM, solid, remove, SpriteAnimation, stuff" + Crafty.math.randomInt(1, 4))
+							.attr({x: (i * 16)-Crafty.viewport.x,
+								   y: (j * 16)-Crafty.viewport.y,
+								   z:2});
+						}
 				}
 
 				else if (theTile[j][i] === ENEMY) {
@@ -386,6 +412,8 @@ window.onload = function() {
 	});
 
 	Crafty.scene("loading");
+
+	// Add title screen
 
 	Crafty.scene("main", function() {
 
