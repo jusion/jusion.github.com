@@ -339,7 +339,7 @@ window.onload = function() {
 							.attr({x: (i * 16)-Crafty.viewport.x,
 								   y: (j * 16)-Crafty.viewport.y,
 								   z:2});
-						}
+					}
 					
     				else {
     					Crafty.e("2D, DOM, solid, remove, SpriteAnimation, stuff" + Crafty.math.randomInt(1, 4))
@@ -370,7 +370,7 @@ window.onload = function() {
 								   y: (j * 16)-Crafty.viewport.y,
 								   z:3});
 				}else if(theTile[j][i] === LRIVER) {
-					Crafty.e("2D, DOM leriv, remove, Collision, solid")
+					Crafty.e("2D, DOM, leriv, remove, Collision, solid")
 							.attr({x:(i * 16)-Crafty.viewport.x, 
 								   y: (j * 16)-Crafty.viewport.y,
 								   z:3});
