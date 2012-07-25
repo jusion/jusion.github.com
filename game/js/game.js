@@ -340,16 +340,14 @@ window.onload = function() {
 								   y: (j * 16)-Crafty.viewport.y,
 								   z:2});
 						}
-					}
+					
     				else {
     					Crafty.e("2D, DOM, solid, remove, SpriteAnimation, stuff" + Crafty.math.randomInt(1, 4))
 							.attr({x: (i * 16)-Crafty.viewport.x,
 								   y: (j * 16)-Crafty.viewport.y,
 								   z:2});
 						}
-				}
-
-				else if (theTile[j][i] === ENEMY) {
+				} else if (theTile[j][i] === ENEMY) {
 					Crafty.e("Enemy", "remove", "kill")
 							.attr({x:(i * 16)-Crafty.viewport.x, 
 								   y: (j * 16)-Crafty.viewport.y,
