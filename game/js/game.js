@@ -139,7 +139,7 @@ window.onload = function() {
 		cave:["game/sfx/cave.mp3","game/sfx/cave.ogg"],
 		desert:["game/sfx/desert.mp3", "game/sfx/desert.ogg"]
 	});
-	
+
 	Crafty.audio.add("default",
 					["game/sfx/default.mp3",
 					"game/sfx/default.ogg"
@@ -436,7 +436,7 @@ window.onload = function() {
 
 	Crafty.scene("main", function() {
 
-		Crafty.audio.play("defaultmusic", -1, 1);
+		Crafty.audio.play("default", -1, 1);
 
 		if(!spawn){
 			spawn = true;
