@@ -29,7 +29,7 @@ Crafty.c("Player", {
 	shoot: false,  //   Used to delay repeat actions in a very short amount of time.
 	blink: false,  //   (including getting hurt)  
 	hurt: false,  
-	jumpDist: 100,  //	Magic jump distance. May make expandable later 
+	jumpDist: 150,  //	Magic jump distance. May make expandable later 
 	facing: "down",//   Player 'facing' direction -- used for animations, attacks, jumps, etc.
 
 	// Initial constructor function

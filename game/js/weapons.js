@@ -123,6 +123,7 @@ Crafty.c("Magic", {
 		})
 		// fix this strange bug!!!
 		.onHit("solid", function(){
+		if(!this.hit('river')) {
 			this.xspeed = 0;
 			this.yspeed = 0;
 			if(this.face === 'right'){
@@ -149,6 +150,7 @@ Crafty.c("Magic", {
 					this.destroy();
 				}, 25);
 			}
+		}	
 		});
 		
 		return this;
