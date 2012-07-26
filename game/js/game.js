@@ -331,8 +331,10 @@ window.onload = function() {
 				for(var j = 0; j < 20; j++) {
 					Crafty.e("2D, DOM, remove, desertfloor" + Crafty.math.randomInt(1, 4))
 						.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
-					Crafty.e("2D, DOM, remove, solid, dbush" + Crafty.math.randomInt(1, 2))
-						.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
+					if (theTile[j][i] === BUSH){
+						Crafty.e("2D, DOM, remove, solid, dbush" + Crafty.math.randomInt(1, 2))
+							.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
+						}
 				}
 			}
 		}
