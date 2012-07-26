@@ -123,21 +123,21 @@ window.onload = function() {
 	});
 	
 	Crafty.audio.add({
-		swing1: ["game/sfx/swing.mp3","game/sfx/swing.ogg"],
-		swing2: ["game/sfx/swing2.mp3","game/sfx/swing2.ogg"],
-		swing3: ["game/sfx/swing3.mp3","game/sfx/swing3.ogg"],
-		spell: ["game/sfx/spell.mp3","game/sfx/spell.ogg"],
-		jump: ["game/sfx/jump.mp3","game/sfx/jump.ogg"],
+		swing1: ["game/sfx/swing.mp3"],
+		swing2: ["game/sfx/swing2.mp3"],
+		swing3: ["game/sfx/swing3.mp3"],
+		spell: ["game/sfx/spell.mp3"],
+		jump: ["game/sfx/jump.mp3"],
 
-		boss1: ["game/sfx/boss1.mp3","game/sfx/boss1.ogg"], 
-		boss2:["game/sfx/boss2.mp3","game/sfx/boss2.ogg"], 
-		boss3:["game/sfx/boss3.mp3","game/sfx/boss3.ogg"], 
-		enemy:["game/sfx/enemy.mp3","game/sfx/enemy.ogg"], 
-		benemy:["game/sfx/benemy.mp3","game/sfx/benemy.ogg"],
+		boss1: ["game/sfx/boss1.mp3"], 
+		boss2:["game/sfx/boss2.mp3"], 
+		boss3:["game/sfx/boss3.mp3"], 
+		enemy:["game/sfx/enemy.mp3"], 
+		benemy:["game/sfx/benemy.mp3"],
 
-		title:["game/sfx/title.mp3","game/sfx/title.ogg"],
-		cave:["game/sfx/cave.mp3","game/sfx/cave.ogg"],
-		desert:["game/sfx/desert.mp3","game/sfx/desert.ogg"]
+		title:["game/sfx/title.mp3"],
+		cave:["game/sfx/cave.mp3"],
+		desert:["game/sfx/desert.mp3"]
 	});
 
 	Crafty.audio.add("default",
