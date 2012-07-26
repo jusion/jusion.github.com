@@ -337,7 +337,7 @@ window.onload = function() {
 							.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
 					} else if (theTile[j][i] === BAAL){
 						Crafty.e("Baal", "remove")
-							.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
+							.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y, z:3});
 					}
 				}
 			}
