@@ -431,24 +431,7 @@ window.onload = function() {
 			
 		Crafty.load(toLoad, function() {
 			Crafty.scene("main");
-		},
-        function(e) {
-            var src = e.src ||"";
-          
-            //update progress
-            text.text("Loading "+src.substr(src.lastIndexOf('/') + 1).toLowerCase()+" Loaded: "+~~e.percent+"%");
-            bar.progressbar({
-                value:~~e.percent
-            });
-       
-      
-        },
-        function(e) {
-            //uh oh, error loading
-            var src = e.src ||"";
-            console.log("Error on loading: "+src.substr(src.lastIndexOf('/') + 1).toLowerCase());
-        }
-        );
+		});
 	});
 
 	Crafty.scene("loading");
