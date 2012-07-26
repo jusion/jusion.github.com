@@ -416,7 +416,7 @@ window.onload = function() {
 	Crafty.scene("loading", function() {
 		
 		var toLoad = [];
-		toLoad.push("game/img/smallsprites.png", "game/img/largesprites.png");
+		//toLoad.push("game/img/smallsprites.png", "game/img/largesprites.png");
 		
 		for(var i in Crafty.assets) {
 			toLoad.push(i);
