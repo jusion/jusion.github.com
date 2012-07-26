@@ -430,6 +430,7 @@ window.onload = function() {
 			.css({"text-align": "center"});
 			
 		Crafty.load(toLoad, function() {
+			alert("loaded!");
 			Crafty.scene("main");
 		},
         function(e) {
