@@ -121,8 +121,8 @@ Crafty.c("AEnemy", {
 
 		})
 		.onHit("SwordAttack", function() {
-			this.destroy(); // TO ADD: AI (attack), HP (trigger hurt function)
 			Crafty.audio.play("enemy", 1);
+			this.destroy(); // TO ADD: AI (attack), HP (trigger hurt function)
 		});
 	},
 	
@@ -231,6 +231,7 @@ Crafty.c("bEnemy", {
 
 		})
 		.onHit("SwordAttack", function() {
+			Crafty.audio.play("benemy", 1);
 			this.destroy(); // TO ADD: AI (attack), HP (trigger hurt function)
 		});
 	}
@@ -273,6 +274,7 @@ Crafty.c("Boss1", {
 		})
 		.onHit("SwordAttack", function() {
 			if(this.bhurt === false){
+				Crafty.audio.play("boss1", 1);
 				this.bhurt = true;
 				this.hp -= 1;
 				
@@ -370,6 +372,7 @@ Crafty.c("Boss2", {
 		})
 		.onHit("SwordAttack", function() {
 			if(this.bhurt === false){
+				Crafty.audio.play("boss2", 1);
 				this.bhurt = true;
 				this.hp -= 1;
 				
@@ -383,6 +386,7 @@ Crafty.c("Boss2", {
 		})
 		.onHit("MagicAttack", function() {
 			if(this.bhurt === false){
+				Crafty.audio.play("boss2", 1);
 				this.bhurt = true;
 				this.hp -= 2;
 				
@@ -462,6 +466,7 @@ Crafty.c("Boss3", {
 		})
 		.onHit("SwordAttack", function() {
 			if(this.bhurt === false){
+				Crafty.audio.play("boss3", 1);
 				this.bhurt = true;
 				this.hp -= 1;
 				
@@ -475,6 +480,7 @@ Crafty.c("Boss3", {
 		})
 		.onHit("MagicAttack", function() {
 			if(this.bhurt === false){
+				Crafty.audio.play("boss3", 1);
 				this.bhurt = true;
 				this.hp -= 2;
 				

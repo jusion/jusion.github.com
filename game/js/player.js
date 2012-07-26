@@ -60,6 +60,7 @@ Crafty.c("Player", {
 					this.magic.current >= 1 && this.questItems.ball === true) {
 				this.shoot = true;
 				this.magic.current -= 1;
+				Crafty.audio.play("spell", 1);
 				mbars[this.magic.current].destroy();  // TODO: Add fade animation!
 				this.magicBolt();
 				this.timeout(function() {
@@ -69,6 +70,7 @@ Crafty.c("Player", {
 			} else if(e.keyCode === Crafty.keys['C'] && this.blink === false &&
 					this.magic.current >= 1 && this.questItems.ball2 === true) {
 				this.blink = true;
+				Crafty.audio.play("jump", 1);
 				this.magic.current -= 1;
 				mbars[this.magic.current].destroy();  // TODO: Add fade animation!
 				this.magicJump();

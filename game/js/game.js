@@ -35,6 +35,8 @@ window.onload = function() {
 	mspawn = false;
 	bspawn = false;
 	threeSpawn = false;
+	caveFlag = false;
+	desertFlag = false;
 	var theTileC = tile4c;
 	
 	// Array to hold map assets - used so that the previously loaded assets can be moved around
@@ -506,6 +508,11 @@ window.onload = function() {
 					$('#gamepanel span').text('Your work here is done....').hide().fadeIn('slow');
 				} else if(world[yTile][xTile] === tile9) {
 					$('#gamepanel span').text('A desert..you can feel the end of your journey approaching..').hide().fadeIn('slow');
+					if(!desertFlag){
+						desertFlag = true;
+						Crafty.audio.stop();
+						Crafty.audio.play("desert", -1);
+					} 
 				} else {
 					$('#gamepanel span').text('Back here..').hide().fadeIn('slow');
 				}
@@ -518,6 +525,11 @@ window.onload = function() {
 					$('#gamepanel span').text('Back here....looks the same').hide().fadeIn('slow');
 				} if(world[yTile][xTile] === tile4){
 					$('#gamepanel span').text('A cave...need to be ballsy to make it through here').hide().fadeIn('slow');
+					if(!caveFlag){
+						caveFlag = true;
+						Crafty.audio.stop();
+						Crafty.audio.play("cave", -1);
+					} 
 				} else {
 					$('#gamepanel span').text('Back here..').hide().fadeIn('slow');
 				}
