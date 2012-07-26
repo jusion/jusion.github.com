@@ -127,7 +127,7 @@ window.onload = function() {
 	});
 	
 	Crafty.sprite(64, "game/img/baal.png", {
-		baal: [0,0];
+		baal: [0,0]
 	});
 	
 	Crafty.audio.add({
