@@ -431,7 +431,7 @@ window.onload = function() {
 			
 		Crafty.load(toLoad, function() {
 			
-			console.log("done!");
+			Crafty.scene("main");
 		},
         function(e) {
             var src = e.src ||"";
