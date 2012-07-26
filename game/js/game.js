@@ -91,6 +91,8 @@ window.onload = function() {
 		dstuff1: [4,8],
 		dstuff2: [5,8],
 		dstuff3: [6,8],
+		dbush1: [7,8],
+		dbush2: [8,8]
 	});
 
 	Crafty.sprite(32, "game/img/largesprites.png", {
@@ -122,6 +124,10 @@ window.onload = function() {
 		cavewall1: [6,6],
 		cavewall2: [7,6],
 		cavewall3: [8,6]
+	});
+	
+	Crafty.sprite(64, "game/img/baal.png", {
+		baal: [0,0];
 	});
 	
 	Crafty.audio.add({
@@ -324,6 +330,8 @@ window.onload = function() {
 			for(var i = 0; i < 30; i++) {
 				for(var j = 0; j < 20; j++) {
 					Crafty.e("2D, DOM, remove, desertfloor" + Crafty.math.randomInt(1, 4))
+						.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
+					Crafty.e("2D, DOM, remove, solid, dbush" + Crafty.math.randomInt(1, 2))
 						.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
 				}
 			}
