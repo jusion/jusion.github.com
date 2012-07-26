@@ -24,6 +24,7 @@ window.onload = function() {
 	var BRLAVA = 19;
 	var BAT = 20;
 	var BOSS3 = 21;
+	var BAAL = 22;
 	
 	// current X/Y tile (based on world map postion) that the player is on
 	var xTile = 0;
@@ -334,7 +335,10 @@ window.onload = function() {
 					if (theTile[j][i] === BUSH){
 						Crafty.e("2D, DOM, remove, solid, dbush" + Crafty.math.randomInt(1, 2))
 							.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
-						}
+					} else if (theTile[j][i] === BAAL){
+						Crafty.e("Baal", "remove")
+							.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
+					}
 				}
 			}
 		}
