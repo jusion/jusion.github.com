@@ -1,7 +1,9 @@
+var game_path = location.href.lastIndexOf("/") !== -1 ? location.href.substring(0, location.href.lastIndexOf("/") + 1) : location.href;
+
 window.onload = function() {
 
 	Crafty.init(480, 320);
-
+	
 	// Global for the map loading functions -- descriptions for map tile code numbers
 	var GRASS = 1;
 	var BUSH = 2;
@@ -123,25 +125,25 @@ window.onload = function() {
 	});
 	
 	Crafty.audio.add({
-		swing1: ["game/sfx/swing.mp3"],
-		swing2: ["game/sfx/swing2.mp3"],
-		swing3: ["game/sfx/swing3.mp3"],
-		spell: ["game/sfx/spell.mp3"],
-		jump: ["game/sfx/jump.mp3"],
+		swing1: [game_path+"game/sfx/swing.mp3"],
+		swing2: [game_path+"game/sfx/swing2.mp3"],
+		swing3: [game_path+"game/sfx/swing3.mp3"],
+		spell: [game_path+"game/sfx/spell.mp3"],
+		jump: [game_path+"game/sfx/jump.mp3"],
 
-		boss1: ["game/sfx/boss1.mp3"], 
-		boss2:["game/sfx/boss2.mp3"], 
-		boss3:["game/sfx/boss3.mp3"], 
-		enemy:["game/sfx/enemy.mp3"], 
-		benemy:["game/sfx/benemy.mp3"],
+		boss1: [game_path+"game/sfx/boss1.mp3"], 
+		boss2:[game_path+"game/sfx/boss2.mp3"], 
+		boss3:[game_path+"game/sfx/boss3.mp3"], 
+		enemy:[game_path+"game/sfx/enemy.mp3"], 
+		benemy:[game_path+"game/sfx/benemy.mp3"],
 
-		title:["game/sfx/title.mp3"],
-		cave:["game/sfx/cave.mp3"],
-		desert:["game/sfx/desert.mp3"]
+		title:[game_path+"game/sfx/title.mp3"],
+		cave:[game_path+"game/sfx/cave.mp3"],
+		desert:[game_path+"game/sfx/desert.mp3"]
 	});
 
 	Crafty.audio.add("default",
-					["game/sfx/default.mp3"]);
+					[game_path+"game/sfx/default.mp3"]);
 	// inital function to generate all the entities
 	function generateEnts() {
 		// Player init
@@ -430,7 +432,7 @@ window.onload = function() {
 			.css({"text-align": "center"});
 			
 		Crafty.load(toLoad, function() {
-			alert("loaded!");
+			
 			Crafty.scene("main");
 		},
         function(e) {
