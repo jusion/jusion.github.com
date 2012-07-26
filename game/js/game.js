@@ -142,8 +142,7 @@ window.onload = function() {
 
 	Crafty.audio.add("default",
 					["game/sfx/default.mp3",
-					"game/sfx/default.ogg"
-	]);
+					"game/sfx/default.ogg"]);
 	// inital function to generate all the entities
 	function generateEnts() {
 		// Player init
@@ -416,11 +415,13 @@ window.onload = function() {
 
 
 	Crafty.scene("loading", function() {
-
-		Crafty.load(["game/img/smallsprites.png", "game/img/largesprites.png"], function() {
-			Crafty.scene("main"); 
-		});
-
+		
+		var toLoad = [];
+		toLoad.push("game/img/smallsprites.png", "game/img/largesprites.png");
+		
+		for(var i in Crafty.assets) {
+			toLoad.push(i);
+		}
 		
 		Crafty.background("#000");
 
@@ -428,6 +429,10 @@ window.onload = function() {
 			.text("Loading")
 			.textColor('#FFFFFF')
 			.css({"text-align": "center"});
+			
+		Crafty.load(toLoad, function() {
+			Crafty.scene("main");
+		});
 	});
 
 	Crafty.scene("loading");
