@@ -266,3 +266,14 @@ Crafty.c("Player", {
 	}
 	
 });
+
+Crafty.c("KeyListener", {
+	init: function() {
+		this.requires("Keyboard")
+		.bind("KeyDown", function(e) {
+			if(e.keyCode === Crafty.keys['ENTER']){
+				Crafty.scene("main");
+			}
+		});
+	}
+});

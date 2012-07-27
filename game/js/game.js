@@ -438,16 +438,11 @@ window.onload = function() {
 			toLoad.push(i);
 		}
 		
-		Crafty.background("#000");
+		Crafty.background("url(game/img/loading.png) black");
 
-		Crafty.e("2D, DOM, Text").attr({w: 200, h: 50, x: 150, y: 160})
-			.text("Loading")
-			.textColor('#FFFFFF')
-			.css({"text-align": "center"});
-			
 		Crafty.load(toLoad, function() {
 			
-			Crafty.scene("main");
+			Crafty.scene("title");
 		},
         function(e) {
             var src = e.src ||"";
@@ -466,11 +461,18 @@ window.onload = function() {
 	});
 
 	Crafty.scene("loading");
-
+	
 	// Add title screen
-
+	Crafty.scene("title", function() {
+		Crafty.background("url(game/img/title.png) black");
+		Crafty.audio.play("title", -1);
+		Crafty.e("KeyListener");
+	});
+	
 	Crafty.scene("main", function() {
-
+		
+		Crafty.background("#000");
+		Crafty.audio.stop();
 		Crafty.audio.play("default", -1, 1);
 
 		if(!spawn){
