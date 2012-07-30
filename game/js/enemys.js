@@ -655,7 +655,7 @@ Crafty.c("Baal", {
 				}, 250);
 			}
 			if(this.hp <= 0) {
-				this.trigger("B3Die");
+				this.trigger("BaalDie");
 			}
 		})
 		.onHit("MagicAttack", function() {
@@ -672,7 +672,7 @@ Crafty.c("Baal", {
 				this.trigger("B3Die");
 			}
 		})
-		.bind("B3Die", function() {
+		.bind("BaalDie", function() {
 			Crafty.scene("Victory");
 			this.destroy();
 		});
