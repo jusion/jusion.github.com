@@ -601,12 +601,9 @@ window.onload = function() {
 	Crafty.scene("GameOver", function() {
 		
 		$('#gamepanel span').text('The light fades from your eyes...you die').hide().fadeIn('slow');
-		Crafty.background("#000");
-		Crafty.e("2D, DOM, Text").attr({w: 200, h: 50, x: 150, y: 160, z: 5})
-			.text("Game Over! :(")
-			.textColor('#FFFFFF')
-			.css({"text-align": "center"});
-
+		Crafty.background("url(game/img/gameover.png) black");	
+		Crafty.audio.stop();
+		
 	});
 	
 	Crafty.scene("Victory", function() {
