@@ -118,6 +118,7 @@ Crafty.c("Player", {
 		.bind("Hurt", function() {
 			if(this.hurt === false) {
 				this.hurt = true;
+				Crafty.audio.play("hurt", 1);
 				this.hp.current -= 1;
 				hearts[this.hp.current]
 				.animate("flicker", 0, 0, 1).animate("flicker", 3, 10);

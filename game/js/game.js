@@ -142,6 +142,8 @@ window.onload = function() {
 		swing3: ["game/sfx/swing3.mp3","game/sfx/swing3.mp3"],
 		spell: ["game/sfx/spell.mp3","game/sfx/spell.ogg"],
 		jump: ["game/sfx/jump.mp3","game/sfx/jump.ogg"],
+		hurt:["game/sfx/hurt.mp3","game/sfx/hurt.ogg"],
+		level:["game/sfx/level.mp3","game/sfx/level.ogg"],
 
 		boss1: ["game/sfx/boss1.mp3","game/sfx/boss1.ogg"], 
 		boss2:["game/sfx/boss2.mp3","game/sfx/boss2.ogg"], 
@@ -191,7 +193,7 @@ window.onload = function() {
 	function luPlayer() {
 	
 		player.magic.current = player.magic.max;
-		
+		Crafty.audio.play("level", 1);
 		for(var i = 0; i<player.hp.max; i++){
 			hearts[i].destroy();
 		}
