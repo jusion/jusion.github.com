@@ -78,7 +78,7 @@ Crafty.c("wEnemy", {
 		}
 
 		this.requires("2D, DOM, wenemy, Collision, solid, SpriteAnimation")
-		.animate("move", 0, 4, 1)
+		.animate("move", 0, 2, 2)
 		.animate("move", 20, -1)
 		.bind("EnterFrame", function() {
 			this.x = this.x + this.speed;
