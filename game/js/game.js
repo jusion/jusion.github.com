@@ -25,6 +25,7 @@ window.onload = function() {
 	var BAT = 20;
 	var BOSS3 = 21;
 	var BAAL = 22;
+	var WORM = 23;
 	
 	// current X/Y tile (based on world map postion) that the player is on
 	var xTile = 0;
@@ -125,6 +126,10 @@ window.onload = function() {
 		cavewall1: [6,6],
 		cavewall2: [7,6],
 		cavewall3: [8,6]
+	});
+	
+	Crafty.sprite(32, "/game/img/wenemy.png" {
+		wenemy: [0,0]
 	});
 	
 	Crafty.sprite(64, "game/img/baal.png", {
@@ -338,6 +343,9 @@ window.onload = function() {
 							.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y});
 					} else if (theTile[j][i] === BAAL){
 						Crafty.e("Baal", "remove")
+							.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y, z:3});
+					} else if(theTile[j][i] === WORM) {
+						Crafty.e("wEnemy", "remove")
 							.attr({x: (i * 16)-Crafty.viewport.x, y: (j * 16)-Crafty.viewport.y, z:3});
 					}
 				}

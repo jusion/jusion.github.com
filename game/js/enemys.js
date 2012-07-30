@@ -65,6 +65,72 @@ Crafty.c("Enemy", {
 	}
 });
 
+Crafty.c("wEnemy", {
+	speed: 0,
+	direction: 0,
+	hp: 1,
+	pClose: false,
+	init: function(){
+		this.speed = Crafty.math.randomInt(1, 2);
+		this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+		if(this.speed === 2){
+			this.speed = -1;
+		}
+
+		this.requires("2D, DOM, wenemy, Collision, solid, SpriteAnimation")
+		.animate("move", 0, 4, 1)
+		.animate("move", 20, -1)
+		.bind("EnterFrame", function() {
+			this.x = this.x + this.speed;
+			this.y = this.y + this.direction;
+			
+			if(this.hit('Player')){
+				Crafty.trigger("Hurt");
+				this.attr({x: this.x - this.speed, y:this.y - this.direction});
+				this.speed = Crafty.math.randomInt(1, 2);
+				this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+				if(this.speed === 2){
+					this.speed = -1;
+				}
+			}else if(this.hit('solid')){
+        		this.attr({x: this.x - this.speed, y:this.y - this.direction});
+				this.speed = Crafty.math.randomInt(1, 2);
+				this.direction = Crafty.math.randomInt(-this.speed,this.speed);
+				if(this.speed === 2){
+					this.speed = -1;
+				}
+    		}else if (this.pClose){
+				this.speed = 0;
+				this.direction = 0;
+				dX = this.x - Crafty(Crafty("Player")[0]).x
+				dY = this.y - Crafty(Crafty("Player")[0]).y
+				if(dX > 0){
+					this.speed = -.8 ;
+				}else{
+					this.speed = .8;
+				}if(dY > 0){
+					this.direction = -.8;
+				} else{
+					this.direction = .8;
+				}
+			}
+			
+			if((Crafty.math.abs(Crafty(Crafty("Player")[0]).x - this.x) < 60) &&
+			   (Crafty.math.abs(Crafty(Crafty("Player")[0]).y - this.y) < 60))
+			{ 
+				this.pClose = true;
+			} else {
+				this.pClose = false;
+			}
+
+		})
+		.onHit("SwordAttack", function() {
+			Crafty.audio.play("benemy", 1);
+			this.destroy(); // TO ADD: AI (attack), HP (trigger hurt function)
+		});
+	}
+});
+
 Crafty.c("AEnemy", {
 	speed: 0,
 	direction: 0,
