@@ -128,7 +128,7 @@ window.onload = function() {
 		cavewall3: [8,6]
 	});
 	
-	Crafty.sprite(32, "/game/img/wenemy.png" {
+	Crafty.sprite(32, "/game/img/wenemy.png", {
 		wenemy: [0,0]
 	});
 	
