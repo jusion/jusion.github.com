@@ -52,7 +52,7 @@ Crafty.c("Ball3", {
 		.animate("mattack", 7, -1)
 		.onHit("Player", function() {
 			player.questItems.ball3 = true;
-			Crafty.scene("Victory");
+			Crafty.trigger("threeSpawner");
 			this.destroy();
 		});
 	}

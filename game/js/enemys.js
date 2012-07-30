@@ -673,7 +673,7 @@ Crafty.c("Baal", {
 			}
 		})
 		.bind("B3Die", function() {
-			Crafty.e("Ball3").attr({x: this.x, y:this.y, z:2});
+			Crafty.scene("Victory");
 			this.destroy();
 		});
 		
