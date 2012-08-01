@@ -274,6 +274,9 @@ Crafty.c("KeyListener", {
 		.bind("KeyDown", function(e) {
 			if(e.keyCode === Crafty.keys['ENTER']){
 				Crafty.scene("main");
+				this.timeout(function() {
+					this.destroy();
+				}, 10);
 			}
 		});
 	}
