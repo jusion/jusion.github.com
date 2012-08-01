@@ -477,7 +477,7 @@ window.onload = function() {
 	Crafty.scene("title", function() {
 		Crafty.background("url(game/img/title.png) black");
 		Crafty.audio.play("title", -1);
-		Crafty.e("KeyListener");
+		Crafty.e("KeyListener", "delete");
 	});
 	
 	Crafty.scene("main", function() {
